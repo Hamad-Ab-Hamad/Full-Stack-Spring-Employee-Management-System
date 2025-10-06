@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,11 +27,18 @@ public class EmployeeController {
         return ResponseEntity.status(200).body(employeeService.getAllEmployee());
     }
 
+    // Build get employee by ID REST API
     @GetMapping("{id}")
     public ResponseEntity<Employee> getEmployeebyIdHandler(@PathVariable("id") Integer id){
         return ResponseEntity.ok(employeeService.getEmployeeById(id));
     }
     
+    // Build delete employee by ID REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployeebyIdHandler(@PathVariable("id") Integer id){
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.ok("Employee deleted successfully");
+    }
 
     // Build post request for the api to add employee 
     @PostMapping

@@ -28,4 +28,10 @@ public class EmployeeService {
     public Employee addEmployee(Employee employee){
         return employeeRepository.save(employee);
     }
+
+    public void deleteEmployeeById(Integer id){
+        Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No employee exsits for the given id: " + id));
+        employeeRepository.delete(existingEmployee);
+
+    }
 }
