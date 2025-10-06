@@ -16,47 +16,47 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer employeeId;
 
-    @Column(name = "first_namme")
+    @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email_id", nullable= false, unique = true)
+    @Column(name = "email", nullable= false, unique = true)
     private String email;
 
     @Column(name = "salary")
-    private String salary;
+    private Integer salary;
 
     @Column(name = "department")
     private String department;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "position")
+    private String position;
 
     @Column(name = "office")
     private String office;
 
     public Employee(){}
 
-    public Employee(String firstName, String lastName, String email, String salary, String department, String role, String office){
+    public Employee(String firstName, String lastName, String email, Integer salary, String department, String position, String office){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.salary = salary;
         this.department = department;
-        this.role = role;
+        this.position = position;
         this.office = office;
     }
 
-    public Employee(Integer employeeId, String firstName, String lastName, String email, String salary, String department, String role, String office){
+    public Employee(Integer employeeId, String firstName, String lastName, String email, Integer salary, String department, String position, String office){
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.salary = salary;
         this.department = department;
-        this.role = role;
+        this.position = position;
         this.office = office;
     }
 
@@ -92,11 +92,11 @@ public class Employee {
         this.email = email;
     }
 
-    public String getSalary(){
+    public Integer getSalary(){
         return salary;
     }
 
-    public void setSalary(String salary){
+    public void setSalary(Integer salary){
         this.salary = salary;
     }
 
@@ -108,12 +108,12 @@ public class Employee {
         this.department = department;
     }
 
-    public String getRole(){
-        return role;
+    public String getposition(){
+        return position;
     }
 
-    public void setRole(String role){
-        this.role = role;
+    public void setposition(String position){
+        this.position = position;
     }
 
     public String getOffice(){
@@ -168,10 +168,10 @@ public class Employee {
 				return false;
 		} else if (!department.equals(other.department))
 			return false;
-        if (role == null) {
-			if (other.role != null)
+        if (position == null) {
+			if (other.position != null)
 				return false;
-		} else if (!role.equals(other.role))
+		} else if (!position.equals(other.position))
 			return false;
         if (office == null) {
 			if (other.office != null)
@@ -194,7 +194,7 @@ public class Employee {
                 ", email='" + email + '\'' +
                 ", salary='" + salary + '\'' +
                 ", department='" + department + '\'' +
-                ", role='" + role + '\'' +
+                ", position='" + position + '\'' +
                 ", office='" + office + '\'' +
                 '}';
     }
