@@ -32,6 +32,21 @@ public class EmployeeService {
     public void deleteEmployeeById(Integer id){
         Employee existingEmployee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No employee exsits for the given id: " + id));
         employeeRepository.delete(existingEmployee);
+    }
 
+    public Employee updateEmployee(Integer id, Employee updatedEmployee){
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No employee exsits for the given id: " + id));
+
+        employee.setFirstName(updatedEmployee.getFirstName());
+        employee.setLastName(updatedEmployee.getLastName());
+        employee.setEmail(updatedEmployee.getEmail());
+        employee.setDepartment(updatedEmployee.getDepartment());
+        employee.setOffice(updatedEmployee.getOffice());
+        employee.setSalary(updatedEmployee.getSalary());
+        employee.setposition(updatedEmployee.getposition());
+
+        employeeRepository.save(employee);
+
+        return employee;
     }
 }
